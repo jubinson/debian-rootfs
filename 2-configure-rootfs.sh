@@ -33,7 +33,7 @@ done
 
 # Enable root to connect to ssh with empty password
 filename=$build_dir/$rootfs_dir/etc/ssh/sshd_config
-if [[ -f filename ]]; then
+if [[ -f $filename ]]; then
     for i in 'PermitRootLogin yes'\
              'PermitEmptyPasswords yes'\
              'UsePAM no'\
