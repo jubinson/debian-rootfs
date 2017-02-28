@@ -5,14 +5,11 @@ if [[ ! $check_and_set ]]; then
     . 0-check-and-set.sh $1 $2
 fi
 
-# Set locale
-LC_ALL=C LANGUAGE=C LANG=C
-
 # Cleanup when interrupt signal is received
 trap "umount $build_dir/$rootfs_dir/dev; exit 1" SIGINT
 
 if [[ $arch == $host_arch ]]; then
-    # Create /dev and /proc in rootfs
+    # Create /dev in rootfs
     mkdir -p $build_dir/$rootfs_dir/dev 2>/dev/null
 
     # Mount /dev in rootfs
@@ -40,6 +37,10 @@ else
 	rm -rf $build_dir/$rootfs_dir
         exit 1
     fi
+
+    # Set environment variables
+    export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
+    export LC_ALL=C LANGUAGE=C LANG=C
 
     # Copy qemu binary to rootfs
     cp $qemu_path $build_dir/$rootfs_dir$qemu_path
