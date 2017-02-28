@@ -47,6 +47,9 @@ else
     # Mount /dev in rootfs
     mount --bind /dev $build_dir/$rootfs_dir/dev
 
+    # Complete the configure of dash
+    chroot $build_dir/$rootfs_dir /var/lib/dpkg/info/dash.preinst install
+
     # Configure debian packages
     chroot $build_dir/$rootfs_dir dpkg --configure -a 
 
