@@ -6,7 +6,6 @@ conf_default=multistrap.conf
 conf_powerpcspe=multistrap_debian-ports.conf
 conf_s390x=multistrap_no-sshd.conf
 rootfs_suffix=rootfs
-build_dir=build
 
 unset check_and_set
 
@@ -125,9 +124,14 @@ if [[ $arch != $host_arch ]]; then
 fi
 
 # Create build directory
+build_dir=build/$arch
 mkdir -p $build_dir 2>/dev/null
 
+# Get current UTC time
+build_date=`date -u -d"$(wget -qO- --save-headers http://www.debian.org |\
+            sed '/^Date: /!d;s///;q')" +%Y%m%dT%H%M%SZ`
+
 # Set rootfs directory
-rootfs_dir=$arch\-$rootfs_suffix
+rootfs_dir=$arch\-$rootfs_suffix-$build_date
 
 check_and_set=1

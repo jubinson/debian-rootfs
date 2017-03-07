@@ -23,12 +23,6 @@ if [[ $arch == $host_arch ]]; then
 	rm -rf $build_dir/$rootfs_dir
         exit 1
     fi
-
-    # Empty root password
-    chroot $build_dir/$rootfs_dir passwd -d root
-
-    # Umount /dev in rootfs
-    umount $build_dir/$rootfs_dir/dev
 else
     # Create root file system
     multistrap -d $build_dir/$rootfs_dir -a $arch -f $conf_file
@@ -53,13 +47,13 @@ else
 
     # Configure debian packages
     chroot $build_dir/$rootfs_dir dpkg --configure -a 
-
-    # Empty root password
-    chroot $build_dir/$rootfs_dir passwd -d root
-    
-    # Remove qemu binary from rootfs
-    rm $build_dir/$rootfs_dir$qemu_path
-
-    # Umount /dev in rootfs
-    umount $build_dir/$rootfs_dir/dev
 fi
+
+# Empty root password
+chroot $build_dir/$rootfs_dir passwd -d root
+
+# Remove qemu binary from rootfs
+rm $build_dir/$rootfs_dir$qemu_path 2>/dev/null
+
+# Umount /dev in rootfs
+umount $build_dir/$rootfs_dir/dev
