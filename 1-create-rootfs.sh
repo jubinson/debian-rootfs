@@ -52,6 +52,9 @@ fi
 # Empty root password
 chroot $build_dir/$rootfs_dir passwd -d root
 
+# Get packages installed
+chroot $build_dir/$rootfs_dir dpkg -l | awk '{if (NR>3) {print $2" "$3}}' > $build_dir/$rootfs_dir\-packages
+
 # Remove qemu binary from rootfs
 rm $build_dir/$rootfs_dir$qemu_path 2>/dev/null
 
