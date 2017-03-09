@@ -43,4 +43,4 @@ if [[ -f $filename ]]; then
 fi
 
 echo
-echo "$build_dir/$rootfs_dir configured"
+echo "$build_dir/`readlink $build_dir/$rootfs_dir` configured"

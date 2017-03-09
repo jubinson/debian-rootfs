@@ -127,11 +127,7 @@ fi
 build_dir=build/$arch
 mkdir -p $build_dir 2>/dev/null
 
-# Get current UTC time
-build_date=`date -u -d"$(wget -qO- --save-headers http://www.debian.org |\
-            sed '/^Date: /!d;s///;q')" +%Y%m%dT%H%M%SZ`
-
 # Set rootfs directory
-rootfs_dir=$arch\-$rootfs_suffix-$build_date
+rootfs_dir=$arch\-$rootfs_suffix
 
 check_and_set=1
