@@ -60,6 +60,9 @@ chroot $build_dir/$rootfs_dir_utc passwd -d root
 # Get packages installed
 chroot $build_dir/$rootfs_dir_utc dpkg -l | awk '{if (NR>3) {print $2" "$3}}' > $build_dir/$rootfs_dir_utc\-packages
 
+# Kill processes running in rootfs
+fuser -sk $build_dir/$rootfs_dir_utc
+
 # Remove qemu binary from rootfs
 rm $build_dir/$rootfs_dir_utc$qemu_path 2>/dev/null
 
