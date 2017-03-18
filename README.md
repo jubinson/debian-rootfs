@@ -3,17 +3,17 @@ Generation of Debian rootfs for multiple architectures
 
 This project relies on multistrap and thus can only be used on Debian/Ubuntu host system.  
 Its purpose is to automate the generation of Debian rootfs for the following architectures:  
- - amd64
- - arm64
- - armel
- - armhf
- - i386
- - mips
- - mipsel
- - powerpcspe
- - powerpc
- - ppc64el
- - s390x
+ - [amd64](http://pc.cd/HWhotalK)
+ - [arm64](http://pc.cd/pWhotalK)
+ - [armel](http://pc.cd/qshotalK)
+ - [armhf](http://pc.cd/3shotalK)
+ - [i386](http://pc.cd/LshotalK)
+ - [mips](http://pc.cd/g2hotalK)
+ - [mipsel](http://pc.cd/e2hotalK)
+ - [powerpc](http://pc.cd/dDhotalK)
+ - [powerpcspe](http://pc.cd/nshotalK)
+ - [ppc64el](http://pc.cd/G2hotalK)
+ - [s390x](http://pc.cd/UWhotalK)
 
 The following packages need to be installed:  
 `# apt-get install multistrap binfmt-support qemu-user-static`
@@ -30,3 +30,5 @@ The root user has an empty password and logs automativally in.
 A ssh server is also running (except for s390x), root can connect to it with an emtpy password.  
 
 Once running on your target, the rootfs can be upgraded with apt-get commands.  
+
+As examples, already built rootfs can be downloaded by clicking on the architecture name in the above list.  
