@@ -1,6 +1,6 @@
 #!/bin/bash
 
-utilities=( dpkg multistrap )
+build_packages=( multistrap binfmt-support qemu-user-static )
 sshd_packages=( ssh openssh-server )
 conf_default=multistrap.conf
 conf_powerpcspe=multistrap_debian-ports.conf
@@ -48,10 +48,10 @@ if [[ $(id -u) != 0 ]]; then
    $exit_or_return 1
 fi
 
-# Needed utilities
-for i in ${utilities[@]}; do
-    if [[ ! `which $i` ]]; then
-        echo "$i utility is needed and missing"
+# Required packages to build rootfs
+for i in ${build_packages[@]}; do
+    if ! dpkg -s $i 2>/dev/null | grep -q "Status: install ok installed"; then
+        echo "$i package is required, please install it"
         $exit_or_return 1
     fi
 done
@@ -101,10 +101,6 @@ if [[ $arch != $host_arch ]]; then
     
     # Find qemu binary
     qemu_path=`which ${qemu_static[$arch]}`
-    if [[ ! $qemu_path ]]; then
-        echo "${qemu_static[$arch]} utility is needed and missing"
-        $exit_or_return 1
-    fi
 
     case $arch in
         powerpcspe)
