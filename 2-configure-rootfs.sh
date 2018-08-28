@@ -9,11 +9,11 @@ fi
 filename=$build_dir/$rootfs_dir/etc/hostname
 echo $arch > $filename
 
-# OpenNIC DNS servers
+# DNS.WATCH servers
 filename=$build_dir/$rootfs_dir/etc/resolv.conf
-echo "# OpenNIC DNS servers" > $filename
-echo "nameserver 95.85.9.86" >> $filename
-echo "nameserver 5.9.49.12" >> $filename
+echo "# DNS.WATCH servers" > $filename
+echo "nameserver 84.200.69.80" >> $filename
+echo "nameserver 84.200.70.40" >> $filename
 
 # Enable root autologin
 filename=$build_dir/$rootfs_dir/lib/systemd/system/serial-getty@.service
