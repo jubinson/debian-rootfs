@@ -3,7 +3,7 @@ Generation of Debian rootfs for multiple architectures
 
 This project relies on multistrap and thus can only be used on Debian/Ubuntu host system.  
 Its purpose is to automate the generation of Debian rootfs for the following architectures:  
- - [amd64](https://www.dropbox.com/s/lx1xwi69gxasbeq/amd64-rootfs-20170318T102216Z.tar.gz?dl=1)
+ - [amd64](https://github.com/kbaraniak/debian-rootfs/releases/download/bookworm-200123/debian-amd64-bookworm-rootfs-200123.tar.xz)
  - [arm64](https://www.dropbox.com/s/zxfg8aosr7zzmg8/arm64-rootfs-20170318T102424Z.tar.gz?dl=1)
  - [armel](https://www.dropbox.com/s/o1oejovcuogkm97/armel-rootfs-20170318T102727Z.tar.gz?dl=1)
  - [armhf](https://www.dropbox.com/s/6uqm7kxg327aex7/armhf-rootfs-20170310T075755Z.tar.gz?dl=1)
