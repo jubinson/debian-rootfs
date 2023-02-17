@@ -12,8 +12,8 @@ echo $arch > $filename
 # DNS.WATCH servers
 filename=$build_dir/$rootfs_dir/etc/resolv.conf
 echo "# DNS.WATCH servers" > $filename
-echo "nameserver 84.200.69.80" >> $filename
-echo "nameserver 84.200.70.40" >> $filename
+echo "nameserver 8.8.8.8" >> $filename
+echo "nameserver 8.8.4.4" >> $filename
 
 # Enable root autologin
 filename=$build_dir/$rootfs_dir/lib/systemd/system/serial-getty@.service
